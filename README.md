@@ -51,7 +51,7 @@
 | Target  | Implementation                                                                         | Competitor    | Result |
 | ------- | -------------------------------------------------------------------------------------- | ------------- | ------ |
 | `ascii` | [`io.string.utils.ascii`](https://super-zig.github.io/io/string/utils/ascii#Benchmark) | `std.ascii`   | x1     |
-| `utf8`  | [`io.string.utils.utf8`](https://super-zig.github.io/io/string/utils/ascii#Benchmark)  | `std.unicode` | x5     |
+| `utf8`  | [`io.string.utils.utf8`](https://super-zig.github.io/io/string/utils/utf8#Benchmark)   | `std.unicode` | x5     |
 
 <br>
 <div align="center">
