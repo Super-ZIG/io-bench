@@ -1,0 +1,16 @@
+.{
+    .name = .io_bench,
+
+    .version = "0.0.8-dev.1",
+
+    .minimum_zig_version = "0.14.0",
+
+    .fingerprint = 0x8a5af6ef7033cb0e,
+
+    .paths = .{
+        "build.zig", "build.zig.zon", "src",
+        "LICENSE", "README.md"
+    },
+
+    // No dependencies.
+}
