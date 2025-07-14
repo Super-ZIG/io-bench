@@ -290,7 +290,7 @@ pub fn prettyPrintHeader(writer: anytype) !void {
             "benchmark",
             "runs",
             "total time",
-            "time/run (avg ± σ)",
+            "time/run (avg +/- std_dev)",
             "(min ... max)",
             "p75",
             "p99",
@@ -345,7 +345,7 @@ pub const Result = struct {
         // Mean + standard deviation
         try setColor(colors, writer, Color.green);
         try writer.print("{s:<23}", .{
-            try std.fmt.bufPrint(&buf, "{:.3} ± {:.3}", .{
+            try std.fmt.bufPrint(&buf, "{:.3} +/- {:.3}", .{
                 std.fmt.fmtDuration(s.mean),
                 std.fmt.fmtDuration(s.stddev),
             }),
@@ -379,7 +379,7 @@ pub const Result = struct {
             // Mean + standard deviation
             try setColor(colors, writer, Color.green);
             try writer.print("{s:<23}", .{
-                try std.fmt.bufPrint(&buf, "{:.3} ± {:.3}", .{
+                try std.fmt.bufPrint(&buf, "{:.3} +/- {:.3}", .{
                     std.fmt.fmtIntSizeBin(m.mean),
                     std.fmt.fmtIntSizeBin(m.stddev),
                 }),

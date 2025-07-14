@@ -13,6 +13,7 @@
 // ╔══════════════════════════════════════ PACK ══════════════════════════════════════╗
 
     const std = @import("std");
+    const vs = @import("./libs/vs/vs.zig");
 
 // ╚══════════════════════════════════════════════════════════════════════════════════╝
 
@@ -20,22 +21,36 @@
 
 // ╔══════════════════════════════════════ CORE ══════════════════════════════════════╗
 
+    const BenchType = enum {
+        ascii, utf8, codepoint
+    };
+
     pub fn main() !void {
+
         const args = try std.process.argsAlloc(std.heap.page_allocator);
         defer std.process.argsFree(std.heap.page_allocator, args);
 
-        // get the target benchmark
-        const target = if (args.len <= 1) {
+        if (args.len <= 1) {
             std.debug.print("Usage: {s} <bench_type>\n", .{args[0]});
             return error.NoBenchTypeProvided;
-        } else args[1];
+        }
 
-        // run the benchmark
-        if (std.mem.eql(u8, target, "ascii")) try @import("./bench/string/utils/ascii.zig").run()
-        else if (std.mem.eql(u8, target, "utf8")) try @import("./bench/string/utils/utf8.zig").run()
-        // ..
+        const target = args[1];
 
-        else return error.InvalidBenchType;
+        std.debug.print("\n", .{ });
+
+        const targetAsEnum = std.meta.stringToEnum(BenchType, target) orelse {
+            std.debug.print("Invalid benchmark type: {s}\n", .{target});
+            return error.InvalidBenchType;
+        };
+
+        switch (targetAsEnum) {
+            .ascii      => try vs.run(@import("./bench/string/utils/ascii.zig").config),
+            .utf8       => try vs.run(@import("./bench/string/utils/utf8.zig").config),
+            .codepoint  => try vs.run(@import("./bench/string/utils/codepoint.zig").config),
+        }
+
+        std.debug.print("\n", .{ });
     }
 
 // ╚══════════════════════════════════════════════════════════════════════════════════╝

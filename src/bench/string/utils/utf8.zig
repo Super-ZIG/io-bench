@@ -12,19 +12,9 @@
 
 // ╔══════════════════════════════════════ PACK ══════════════════════════════════════╗
 
-    const std           = @import("std");
-    const io            = @import("../../../libs/io/io.zig");
-    const zBench        = @import("../../../libs/zBench/zbench.zig");
-
-// ╚══════════════════════════════════════════════════════════════════════════════════╝
-
-
-
-// ╔══════════════════════════════════════ INIT ══════════════════════════════════════╗
-
-    const short_testing_value   = "Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦";
-    const medium_testing_value  = "Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦";
-    const long_testing_value    = "Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦Aأ你🌟☹️👨‍🏭👨‍👩‍👧‍👦";
+    const std_unicode   = @import("std").unicode;
+    const io_utf8       = @import("../../../libs/io/io.zig").string.utils.utf8;
+    const vs            = @import("../../../libs/vs/vs.zig");
 
 // ╚══════════════════════════════════════════════════════════════════════════════════╝
 
@@ -32,187 +22,81 @@
 
 // ╔══════════════════════════════════════ CORE ══════════════════════════════════════╗
 
-    // @zig/unicode
-    fn std_bench(_: std.mem.Allocator, comptime num: usize) void {
-        for (0..num) |_| {
-            // encode
-            {
+    fn std_bench(_: vs.Alloc, comptime scale: usize) void {
+        const sample = vs.getSlice(scale, .utf8);
+
+        for (0..scale) |_| {
+            var i: usize = 0;
+
+            while (i < sample.len) {
+                // sequence length
+                const len = std_unicode.utf8ByteSequenceLength(sample[i]) catch {
+                    i += 1;
+                    continue;
+                };
+
+                if (i + len > sample.len) break;
+
+                // decode
+                const decoded = std_unicode.utf8Decode(sample[i..i+len]) catch unreachable;
+                vs.keep(decoded);
+
+                // codepoint length
+                const codepoint_len = std_unicode.utf8CodepointSequenceLength(decoded) catch 1;
+                vs.keep(codepoint_len);
+
+                // encode
                 var buf: [4]u8 = undefined;
+                const encoded_len = std_unicode.utf8Encode(decoded, &buf) catch unreachable;
+                vs.keep(buf);
+                vs.keep(encoded_len);
 
-                // short
-                for (short_testing_value) |c| {
-                    var res = std.unicode.utf8Encode(c, &buf) catch unreachable;
-                    res += 1;
-                }
-
-                // medium
-                for (medium_testing_value) |c| {
-                    var res = std.unicode.utf8Encode(c, &buf) catch unreachable;
-                    res += 1;
-                }
-
-                // long
-                for (long_testing_value) |c| {
-                    var res = std.unicode.utf8Encode(c, &buf) catch unreachable;
-                    res += 1;
-                }
-            }
-
-            // decode
-            {
-                // short
-                {
-                    var i : usize = 0;
-                    while (i < short_testing_value.len) {
-                        const len = std.unicode.utf8ByteSequenceLength(short_testing_value[i]) catch unreachable;
-                        var res = std.unicode.utf8Decode(short_testing_value[i..i+len]) catch unreachable;
-                        res += len;
-                        i += len;
-                    }
-                }
-
-                // medium
-                {
-                    var i : usize = 0;
-                    while (i < medium_testing_value.len) {
-                        const len = std.unicode.utf8ByteSequenceLength(medium_testing_value[i]) catch unreachable;
-                        var res = std.unicode.utf8Decode(medium_testing_value[i..i+len]) catch unreachable;
-                        res += len;
-                        i += len;
-                    }
-                }
-
-                // long
-                {
-                    var i : usize = 0;
-                    while (i < long_testing_value.len) {
-                        const len = std.unicode.utf8ByteSequenceLength(long_testing_value[i]) catch unreachable;
-                        var res = std.unicode.utf8Decode(long_testing_value[i..i+len]) catch unreachable;
-                        res += len;
-                        i += len;
-                    }
-                }
+                i += len;
             }
         }
     }
 
-    // @super-zig/utf8
-    fn io_bench(_: std.mem.Allocator, comptime num: usize) void {
-        for (0..num) |_| {
-            // encode
-            {
+    fn io_bench(_: vs.Alloc, comptime scale: usize) void {
+        const sample = vs.getSlice(scale, .utf8);
+
+        for (0..scale) |_| {
+            var i: usize = 0;
+
+            while (i < sample.len) {
+                // sequence length
+                const len = io_utf8.getCodepointLengthOrNull(sample[i]) orelse {
+                    i += 1;
+                    continue;
+                };
+
+                if (i + len > sample.len) break;
+
+                // decode
+                const decoded = io_utf8.decode(sample[i..i+len]);
+                vs.keep(decoded);
+
+                // codepoint length
+                const codepoint_len = io_utf8.getCodepointLength(decoded);
+                vs.keep(codepoint_len);
+
+                // encode
                 var buf: [4]u8 = undefined;
+                const encoded_len = io_utf8.encode(decoded, &buf);
+                vs.keep(buf);
+                vs.keep(encoded_len);
 
-                // short
-                for (short_testing_value) |c| {
-                    var res = io.string.utils.utf8.encode(c, &buf);
-                    res += 1;
-                }
-
-                // medium
-                for (medium_testing_value) |c| {
-                    var res = io.string.utils.utf8.encode(c, &buf);
-                    res += 1;
-                }
-
-                // long
-                for (long_testing_value) |c| {
-                    var res = io.string.utils.utf8.encode(c, &buf);
-                    res += 1;
-                }
-            }
-
-            // decode
-            {
-                // short
-                {
-                    var i : usize = 0;
-                    while (i < short_testing_value.len) {
-                        const len = io.string.utils.utf8.getFirstByteLength(short_testing_value[i]);
-                        var res = io.string.utils.utf8.decode(short_testing_value[i..i+len]);
-                        res += len;
-                        i += len;
-                    }
-                }
-
-                // medium
-                {
-                    var i : usize = 0;
-                    while (i < medium_testing_value.len) {
-                        const len = io.string.utils.utf8.getFirstByteLength(medium_testing_value[i]);
-                        var res = io.string.utils.utf8.decode(medium_testing_value[i..i+len]);
-                        res += len;
-                        i += len;
-                    }
-                }
-
-                // long
-                {
-                    var i : usize = 0;
-                    while (i < long_testing_value.len) {
-                        const len = io.string.utils.utf8.getFirstByteLength(long_testing_value[i]);
-                        var res = io.string.utils.utf8.decode(long_testing_value[i..i+len]);
-                        res += len;
-                        i += len;
-                    }
-                }
+                i += len;
             }
         }
     }
 
-// ╚══════════════════════════════════════════════════════════════════════════════════╝
-
-
-
-// ╔══════════════════════════════════════ Bench ═════════════════════════════════════╗
-
-    fn std_x10   (allocator: std.mem.Allocator) void { std_bench(allocator, 10);       }
-    fn std_x1k   (allocator: std.mem.Allocator) void { std_bench(allocator, 1000);     }
-    fn std_x100k (allocator: std.mem.Allocator) void { std_bench(allocator, 100000);   }
-
-    fn io_x10    (allocator: std.mem.Allocator) void { io_bench(allocator, 10);        }
-    fn io_x1k    (allocator: std.mem.Allocator) void { io_bench(allocator, 1000);      }
-    fn io_x100k  (allocator: std.mem.Allocator) void { io_bench(allocator, 100000);    }
-
-    pub fn run() !void {
-        // init the benchmark
-        var bench = zBench.Benchmark.init(std.heap.page_allocator, .{});
-        defer bench.deinit();
-
-        // to avoid noise
-        try bench.add("__",         std_x1k,    .{});
-        try bench.add("__",         io_x1k,     .{});
-
-        // x10
-        try bench.add("std_x10",    std_x10,    .{});
-        try bench.add("io_x10",     io_x10,     .{});
-
-        // x1k
-        try bench.add("std_x1k",    std_x1k,    .{});
-        try bench.add("io_x1k",     io_x1k,     .{});
-
-        // x100k
-        try bench.add("std_x100k",  std_x100k,  .{});
-        try bench.add("io_x100k",   io_x100k,   .{});
-
-        // to avoid noise
-        try bench.add("__",         std_x1k,    .{});
-        try bench.add("__",         io_x1k,     .{});
-
-        // run the benchmark
-        try std.io.getStdOut().writer().writeAll("\n");
-        try bench.run(std.io.getStdOut().writer());
-    }
-
-// ╚══════════════════════════════════════════════════════════════════════════════════╝
-
-
-
-// ╔══════════════════════════════════════ Usage ═════════════════════════════════════╗
-
-    // Run the benchmark using one of the following commands:
-    //
-    // - zig build run -- utf8                    # for debug   build
-    // - zig build run --release=fast -- utf8     # for release build
+    pub const config : vs.Config = .{
+        .handlers  = .{
+            .{ .name = "std", .bench_fn = std_bench },
+            .{ .name = "io",  .bench_fn = io_bench },
+        },
+        .rounds     = 3,
+        .scales     = &.{ 10, 100, 1000 },
+    };
 
 // ╚══════════════════════════════════════════════════════════════════════════════════╝
