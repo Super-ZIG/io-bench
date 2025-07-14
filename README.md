@@ -2,12 +2,12 @@
 <br>
 <div align="center">
     <p>
-        <img src="https://raw.githubusercontent.com/maysara-elshewehy/SuperZIG-assets/refs/heads/main/dist/img/logo/IO/logo.png" alt="Input / Output" width="1000" />
+        <img src="https://raw.githubusercontent.com/maysara-elshewehy/SuperZIG-assets/refs/heads/main/dist/img/logo/IO/logo-x.png" alt="Input / Output" width="1000" />
     </p>
 </div>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/version-0.0.8 dev.1-blue.svg" alt="Version" />
+    <img src="https://img.shields.io/badge/version-0.0.8 dev.2-blue.svg" alt="Version" />
     <a href="https://github.com/Super-ZIG/io/actions/workflows/main.yml">
         <img src="https://github.com/Super-ZIG/io/actions/workflows/main.yml/badge.svg" alt="CI" />
     </a>
@@ -46,12 +46,15 @@
 
 <!----------------------------------- LIST ---------------------------------->
 
-> Well, the library has a lot of stuff, so I'm going to do the comparisons and benchmarks individually. In this table, I've listed all the important comparisons I've done so far (this document is still under development).
+> Well, this library has a lot of stuff, so I'm going to do the comparisons and benchmarks individually.
+>
+> In this table, I've listed all the important comparisons I've done so far (this document is still under development).
 
-| Target  | Implementation                                                                         | Competitor    | Result |
-| ------- | -------------------------------------------------------------------------------------- | ------------- | ------ |
-| `ascii` | [`io.string.utils.ascii`](https://super-zig.github.io/io/string/utils/ascii#Benchmark) | `std.ascii`   | x1     |
-| `utf8`  | [`io.string.utils.utf8`](https://super-zig.github.io/io/string/utils/utf8#Benchmark)   | `std.unicode` | x5     |
+| Target      | Implementation                                                                                 | Competitor    | Result     |
+| ----------- | ---------------------------------------------------------------------------------------------- | ------------- | ---------- |
+| `ascii`     | [`io.string.utils.ascii`](https://super-zig.github.io/io/string/utils/ascii#Benchmark)         | `std.ascii`   | same speed |
+| `utf8`      | [`io.string.utils.utf8`](https://super-zig.github.io/io/string/utils/utf8#Benchmark)           | `std.unicode` | up to x5   |
+| `codepoint` | [`io.string.utils.codepoint`](https://super-zig.github.io/io/string/utils/codepoint#Benchmark) | `std.unicode` | up to x5   |
 
 <br>
 <div align="center">
